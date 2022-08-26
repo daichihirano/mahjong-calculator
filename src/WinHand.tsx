@@ -1,12 +1,24 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import type { FC } from 'react'
 import { Button } from '@mui/material';
 
-const WinHand:React.FC<{message:string}>=({message})=>{
+import { subPointContext } from './App'
+
+const WinHand:FC=()=>{
+    const {subPoint, setSubPoint} = useContext(subPointContext);
+
+    const onClickPinhu=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+        setSubPoint(20);
+        console.log(subPoint);
+    }
+    const onClickChitoi=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+        setSubPoint(25);
+        console.log(subPoint);
+    }
     return (
         <div>
-            <div>message</div>
-            <Button variant="outlined">ピンフツモ</Button>
-            <Button variant="outlined">七対子</Button>
+            <Button variant="outlined" onClick={onClickPinhu}>ピンフツモ</Button>
+            <Button variant="outlined" onClick={onClickChitoi}>七対子</Button>
         </div>
     )
 }

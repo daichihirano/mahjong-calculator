@@ -1,13 +1,39 @@
+import React, {useContext, useState} from 'react'
 import logo from './logo.svg';
 import './App.css';
 import {Button} from '@mui/material'
 
 import WinHand from './WinHand';
+import BasePoint from './BasePoint';
+
+export const pointContext=React.createContext({} as{
+  basePoint : number
+  setBasePoint : React.Dispatch<React.SetStateAction<number>>
+});
+export const subPointContext=React.createContext({} as{
+  subPoint : number
+  setSubPoint : React.Dispatch<React.SetStateAction<number>>
+});
+
 function App() {
+
+  const [basePoint, setBasePoint] = useState(0)
+  const [subPoint, setSubPoint] = useState(0)
+
   return (
     <div>
       <h1>符計算</h1>
-      <WinHand message={"hello"}/>
+      <h2>翻数：{basePoint}</h2>
+      <h2>符：{subPoint}</h2>
+      <div>
+        何翻?
+        <pointContext.Provider value={{basePoint, setBasePoint}}>
+          <BasePoint />
+        </pointContext.Provider>
+      </div>
+      <subPointContext.Provider value={{subPoint, setSubPoint}}>
+        <WinHand />
+      </subPointContext.Provider>
       <div>
         上がり方
       </div>
