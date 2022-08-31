@@ -41,23 +41,23 @@ function App() {
     fu : 0
   });
   const [mentsuList, setMentsuList] = useState<Mentsu[]>([{
-    name:"",
-    type:"",
+    name:"-",
+    type:"-",
     fu:0
   },
   {
-    name:"",
-    type:"",
+    name:"-",
+    type:"-",
     fu:0
   },
   {
-    name:"",
-    type:"",
+    name:"-",
+    type:"-",
     fu:0
   },
   {
-    name:"",
-    type:"",
+    name:"-",
+    type:"-",
     fu:0
   }
   ]);
@@ -86,7 +86,7 @@ function App() {
       <div>
         あなたのメンツは
         {mentsuList.map((mentsu)=>(
-              mentsu.fu + "符"
+              "面子の種類:" + mentsu.name + " 牌の種類:" + mentsu.type + " " + mentsu.fu + "符/"
         ))}
       </div>
       <div>

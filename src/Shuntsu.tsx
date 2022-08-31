@@ -21,8 +21,8 @@ const Shuntsu:FC=()=>{
 
     const onClickPointButton = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         const mentsuShuntsu : Mentsu = {
-            name:"shuntsu",
-            type : "",
+            name:"順子",
+            type : "無",
             fu : Number(e.currentTarget.value)
         } 
         const newMentsuList : Mentsu[] = [...mentsuList, mentsuShuntsu];
