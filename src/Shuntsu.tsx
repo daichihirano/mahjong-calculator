@@ -1,11 +1,11 @@
 import React, {useContext} from 'react'
 import type { FC } from 'react'
 import { Button } from '@mui/material';
-import { pointContext } from './context/Context'
+import { mentsuListContext } from './context/Context'
 
 const Shuntsu:FC=()=>{
 
-    const {basePoint, setBasePoint} = useContext(pointContext);
+    const {mentsuList, setMentsuList} = useContext(mentsuListContext);
     
 
     var basePointList:Array<number> = [];
@@ -13,8 +13,23 @@ const Shuntsu:FC=()=>{
         basePointList.push(i);
     }
 
+    interface Mentsu {
+        name : string;
+        type : string;
+        fu : number;
+    }
+
     const onClickPointButton = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-         setBasePoint(Number(e.currentTarget.value));
+        const mentsuShuntsu : Mentsu = {
+            name:"shuntsu",
+            type : "",
+            fu : Number(e.currentTarget.value)
+        } 
+        const newMentsuList : Mentsu[] = [...mentsuList, mentsuShuntsu];
+        if(newMentsuList.length > 4){
+            newMentsuList.shift();
+        }
+        setMentsuList(newMentsuList);
     }
 
     return (

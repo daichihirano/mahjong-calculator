@@ -14,22 +14,17 @@ const BasePoint:FC=()=>{
         basePointList.push(i);
     }
 
-    const variant:any = 'outlined';
-
-    const [color, setColor] = useState(variant)
-
 
     const onClickPointButton = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         
         setBasePoint(Number(e.currentTarget.value));
-        setColor('contained')
     }
 
     return (
         <div>
             {basePointList.map((point,idx)=>{
                 return(
-                    <Button variant={color} value={point} onClick={onClickPointButton}  key={idx}>{point}</Button>
+                    <Button variant='outlined' value={point} onClick={onClickPointButton}  key={idx}>{point}</Button>
                 )
             })}
         </div>

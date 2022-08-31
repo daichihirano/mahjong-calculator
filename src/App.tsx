@@ -12,6 +12,8 @@ import Head from './Head';
 import {
   pointContext,
   subPointContext,
+  mentsuListContext,
+  shuntsuContext,
   headContext,
   waitContext,
 } from './context/Context';
@@ -25,17 +27,68 @@ import Ankan from './ankan/Ankan';
 
 function App() {
 
+  interface Mentsu {
+    name : string;
+    type : string;
+    fu : number;
+  }
+
   const [basePoint, setBasePoint] = useState(0)
   const [subPoint, setSubPoint] = useState(0)
-  const [shuntsu, setShuntsu] = useState(0);
+  const [shuntsu, setShuntsu] = useState<Mentsu>({
+    name : "",
+    type : "",
+    fu : 0
+  });
+  const [mentsuList, setMentsuList] = useState<Mentsu[]>([{
+    name:"",
+    type:"",
+    fu:0
+  },
+  {
+    name:"",
+    type:"",
+    fu:0
+  },
+  {
+    name:"",
+    type:"",
+    fu:0
+  },
+  {
+    name:"",
+    type:"",
+    fu:0
+  }
+  ]);
+
   const [head, setHead] = useState(0);
   const [wait, setWait] = useState(0);
+  const [totalFu, setTotalFu] = useState(20);
+  
 
   return (
     <div>
       <h1>符計算</h1>
       <h2>翻数：{basePoint}</h2>
-      <h2>符：{subPoint == 25 ? 25 : 20+ subPoint + head + wait}</h2>
+      <h2>
+        符：{subPoint == 25 ? 
+            25
+            :
+            20 + subPoint + head + wait +
+            mentsuList.map((mentsu)=>(
+              mentsu.fu
+            )).reduce((sumFu, fu)=>(
+              sumFu += fu
+            ),0)
+            }
+      </h2>
+      <div>
+        あなたのメンツは
+        {mentsuList.map((mentsu)=>(
+              mentsu.fu + "符"
+        ))}
+      </div>
       <div>
         何翻?
         <pointContext.Provider value={{basePoint, setBasePoint}}>
@@ -45,12 +98,15 @@ function App() {
       <div>
         上がり方
         <subPointContext.Provider value={{subPoint, setSubPoint}}>
+        翻数:{subPoint}
           <WinHand />
         </subPointContext.Provider>
       </div>
       <div>
         順子何個？
-        <Shuntsu />
+        <mentsuListContext.Provider  value = {{mentsuList, setMentsuList}}>
+          <Shuntsu />
+        </mentsuListContext.Provider>
       </div>
       <div>
         明刻何個？

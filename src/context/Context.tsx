@@ -10,6 +10,22 @@ export const subPointContext=React.createContext({} as{
     setSubPoint : React.Dispatch<React.SetStateAction<number>>
 });
 
+interface Mentsu {
+    name : string;
+    type : string;
+    fu : number;
+}
+
+export const shuntsuContext=React.createContext({} as{
+    shuntsu : Mentsu
+    setShuntsu : React.Dispatch<React.SetStateAction<Mentsu>>
+});
+
+export const mentsuListContext=React.createContext({} as{
+    mentsuList : Mentsu[]
+    setMentsuList : React.Dispatch<React.SetStateAction<Mentsu[]>>
+});
+
 export const headContext=React.createContext({} as{
     head : number
     setHead : React.Dispatch<React.SetStateAction<number>>
