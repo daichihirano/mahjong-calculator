@@ -1,13 +1,11 @@
 import React, {useContext} from 'react'
 import type { FC } from 'react'
 import { Button } from '@mui/material';
-import { mentsuListContext } from './context/Context'
 
-const Shuntsu:FC=()=>{
+import { mentsuListContext } from '../../context/Context'
 
+const AnkoChun:FC=()=>{
     const {mentsuList, setMentsuList} = useContext(mentsuListContext);
-    
-
     var basePointList:Array<number> = [];
     for(var i:number = 0; i<=4; i++){
         basePointList.push(i);
@@ -20,12 +18,14 @@ const Shuntsu:FC=()=>{
     }
 
     const onClickPointButton = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-        const mentsuShuntsu : Mentsu = {
-            name:"順子",
-            type : "無",
+        
+        console.log(mentsuList);
+        const mentsuMinkoChun : Mentsu = {
+            name:"暗刻",
+            type : "2~8",
             fu : Number(e.currentTarget.value)
         } 
-        const newMentsuList : Mentsu[] = [...mentsuList, mentsuShuntsu];
+        const newMentsuList : Mentsu[] = [...mentsuList, mentsuMinkoChun];
         if(newMentsuList.length > 4){
             newMentsuList.shift();
         }
@@ -36,10 +36,10 @@ const Shuntsu:FC=()=>{
         <div>
             {basePointList.map((point,idx)=>{
                 return(
-                    <Button variant="outlined" value={point} onClick={onClickPointButton}  key={idx}>{point}</Button>
+                    <Button variant="outlined" value={4*point} onClick={onClickPointButton}  key={idx}>{point}</Button>
                 )
             })}
         </div>
     )
 }
-export default Shuntsu;
+export default AnkoChun;

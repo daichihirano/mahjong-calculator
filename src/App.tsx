@@ -5,7 +5,7 @@ import {Button} from '@mui/material'
 
 import WinHand from './WinHand';
 import BasePoint from './BasePoint';
-import Shuntsu from './Shuntsu';
+import Shuntsu from './mentsu/Shuntsu';
 import WaitHand from './WaitHand';
 import Head from './Head';
 
@@ -18,10 +18,10 @@ import {
   waitContext,
 } from './context/Context';
 
-import Minko from './minko/Minko';
-import Anko from './anko/Anko';
-import Minkan from './minkan/Minkan';
-import Ankan from './ankan/Ankan';
+import Minko from './mentsu/minko/Minko';
+import Anko from './mentsu/anko/Anko';
+import Minkan from './mentsu/minkan/Minkan';
+import Ankan from './mentsu/ankan/Ankan';
 
 
 
@@ -33,33 +33,17 @@ function App() {
     fu : number;
   }
 
-  const [basePoint, setBasePoint] = useState(0)
-  const [subPoint, setSubPoint] = useState(0)
-  const [shuntsu, setShuntsu] = useState<Mentsu>({
-    name : "",
-    type : "",
-    fu : 0
-  });
-  const [mentsuList, setMentsuList] = useState<Mentsu[]>([{
-    name:"-",
-    type:"-",
-    fu:0
-  },
-  {
-    name:"-",
-    type:"-",
-    fu:0
-  },
-  {
-    name:"-",
-    type:"-",
-    fu:0
-  },
-  {
-    name:"-",
-    type:"-",
+  const emptyMentsu : Mentsu = {
+    name:"",
+    type:"",
     fu:0
   }
+
+  const [basePoint, setBasePoint] = useState(0)
+  const [subPoint, setSubPoint] = useState(0)
+  const [shuntsu, setShuntsu] = useState<Mentsu>(emptyMentsu);
+  const [mentsuList, setMentsuList] = useState<Mentsu[]>([
+    emptyMentsu,emptyMentsu,emptyMentsu,emptyMentsu
   ]);
 
   const [head, setHead] = useState(0);
@@ -85,12 +69,12 @@ function App() {
       </h2>
       <div>
         あなたのメンツは
-        {mentsuList.map((mentsu)=>(
-              "面子の種類:" + mentsu.name + " 牌の種類:" + mentsu.type + " " + mentsu.fu + "符/"
+        {mentsuList.map((mentsu, key)=>(
+              <div key={key}>{"面子の種類:" + mentsu.name + " 牌の種類:" + mentsu.type + " " + mentsu.fu + "符"}</div>
         ))}
       </div>
       <div>
-        何翻?
+        何符?
         <pointContext.Provider value={{basePoint, setBasePoint}}>
           <BasePoint />
         </pointContext.Provider>
@@ -98,38 +82,9 @@ function App() {
       <div>
         上がり方
         <subPointContext.Provider value={{subPoint, setSubPoint}}>
-        翻数:{subPoint}
+          翻数:{subPoint}
           <WinHand />
         </subPointContext.Provider>
-      </div>
-      <div>
-        順子何個？
-        <mentsuListContext.Provider  value = {{mentsuList, setMentsuList}}>
-          <Shuntsu />
-        </mentsuListContext.Provider>
-      </div>
-      <div>
-        明刻何個？
-        <Minko />
-      </div>
-      <div>
-        暗刻
-        <Anko />
-      </div>
-      <div>
-        明槓
-        <Minkan />
-      </div>
-      <div>
-        暗槓
-        <Ankan />
-      </div>
-      <div>
-        雀頭は？
-        翻数:{head}
-        <headContext.Provider value={{head, setHead}}>
-          <Head />
-        </headContext.Provider>
       </div>
       <div>
         待ちの形は？
@@ -138,6 +93,22 @@ function App() {
           <WaitHand />
         </waitContext.Provider>
       </div>
+      <div>
+        雀頭は？
+        翻数:{head}
+        <headContext.Provider value={{head, setHead}}>
+          <Head />
+        </headContext.Provider>
+      </div>
+      <mentsuListContext.Provider  value = {{mentsuList, setMentsuList}}>
+        <Shuntsu />
+        <Minko />
+        <Anko />
+        <Minkan />
+        <Ankan />
+      </mentsuListContext.Provider>
+      
+      
 
     </div>
     
