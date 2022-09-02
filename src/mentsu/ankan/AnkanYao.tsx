@@ -11,7 +11,7 @@ const AnkanYao:FC=()=>{
     const mentsuAnkanYao : Mentsu = {
         name:"暗槓",
         type : "1,9,字",
-        fu : 16
+        fu : 32
     };
     return (
         <MentsuButton mentsu={mentsuAnkanYao} />

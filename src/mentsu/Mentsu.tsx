@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import Shuntsu from './Shuntsu';
-import Minko from './minkan/Minkan';
+import Minko from './minko/Minko';
 import Anko from './anko/Anko';
 import Minkan from './minkan/Minkan';
 import Ankan from './ankan/Ankan';
