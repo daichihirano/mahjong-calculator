@@ -8,12 +8,10 @@ const BasePoint:FC=()=>{
 
     const {basePoint, setBasePoint} = useContext(pointContext);
     
-
     var basePointList:Array<number> = [];
     for(var i:number = 1; i<=13; i++){
         basePointList.push(i);
     }
-
 
     const onClickPointButton = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         
@@ -22,6 +20,7 @@ const BasePoint:FC=()=>{
 
     return (
         <div>
+            何符?
             {basePointList.map((point,idx)=>{
                 return(
                     <Button variant='outlined' value={point} onClick={onClickPointButton}  key={idx}>{point}</Button>

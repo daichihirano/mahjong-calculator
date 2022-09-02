@@ -13,6 +13,7 @@ const Head:FC=()=>{
     }
     return (
         <div>
+            雀頭は?
             <Button variant="outlined" value={0} onClick={onClickHead}>数牌</Button>
             <Button variant="outlined" value={0} onClick={onClickHead}>オタ風</Button>
             <Button variant="outlined" value={2} onClick={onClickHead}>自風</Button>

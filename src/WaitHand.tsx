@@ -12,6 +12,7 @@ const WaitHand:FC=()=>{
     }
     return (
         <div>
+            待ちの形は？
             <Button variant="outlined" value={0} onClick={onClickWait}>両面</Button>
             <Button variant="outlined" value={0} onClick={onClickWait}>シャボ</Button>
             <Button variant="outlined" value={2} onClick={onClickWait}>ペンチャン</Button>

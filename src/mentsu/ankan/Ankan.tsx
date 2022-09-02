@@ -1,18 +1,18 @@
-import React from 'react'
 import type { FC } from 'react'
 
 import AnkanChun from './AnkanChun';
 import AnkanYao from './AnkanYao';
 
-const Ankan:FC=()=>{
+import { Box } from '@mui/material';
 
+const Ankan:FC=()=>{
     return (
         <div>
-            暗槓<br />
-            2~8何個?
-            <AnkanChun />
-            1,9,字牌何個?
-            <AnkanYao />
+            暗刻<br />
+            <Box sx={{display:'flex', flexDirection:'row'}}>
+                <AnkanChun />
+                <AnkanYao />
+            </Box>    
         </div>
     )
 }

@@ -1,20 +1,20 @@
-import React from 'react'
 import type { FC } from 'react'
 
 import MinkanChun from './MinkanChun';
 import MinkanYao from './MinkanYao';
 
-const Minko:FC=()=>{
+import { Box } from '@mui/material';
+
+const Minkan:FC=()=>{
 
     return (
         <div>
-            明槓<br />
-            2~8何個?
-            <MinkanChun />
-            1,9,字牌何個?
-            <MinkanYao />
-            
+            明刻<br />
+            <Box sx={{display:'flex', flexDirection:'row'}}>
+                <MinkanChun />
+                <MinkanYao />
+            </Box>    
         </div>
     )
 }
-export default Minko;
+export default Minkan;

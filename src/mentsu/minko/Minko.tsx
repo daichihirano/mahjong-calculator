@@ -1,17 +1,17 @@
-import React from 'react'
 import type { FC } from 'react'
 
 import MinkoChun from './MinkoChun';
 import MinkoYao from './MinkoYao';
+import { Box } from '@mui/material';
 
 const Minko:FC=()=>{
     return (
         <div>
             明刻<br />
-            2~8何個?
-            <MinkoChun />
-            1,9,字牌何個?
-            <MinkoYao />        
+            <Box sx={{display:'flex', flexDirection:'row'}}>
+                <MinkoChun />
+                <MinkoYao />
+            </Box>    
         </div>
     )
 }

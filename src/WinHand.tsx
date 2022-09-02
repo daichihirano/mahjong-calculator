@@ -21,6 +21,7 @@ const WinHand:FC=()=>{
     }
     return (
         <div>
+            上がり方
             <Button variant="outlined" onClick={onClickTsumo}>ツモ</Button>
             <Button variant="outlined" onClick={onClickRon}>メンゼンロン</Button>
             <Button variant="outlined" onClick={onClickChitoi}>七対子</Button>
