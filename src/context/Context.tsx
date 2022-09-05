@@ -15,7 +15,10 @@ interface Mentsu {
     type : string;
     fu : number;
 }
-
+interface Head {
+    name : string;
+    fu : number;
+}
 export const shuntsuContext=React.createContext({} as{
     shuntsu : Mentsu
     setShuntsu : React.Dispatch<React.SetStateAction<Mentsu>>
@@ -27,8 +30,8 @@ export const mentsuListContext=React.createContext({} as{
 });
 
 export const headContext=React.createContext({} as{
-    head : number
-    setHead : React.Dispatch<React.SetStateAction<number>>
+    head : Head
+    setHead : React.Dispatch<React.SetStateAction<Head>>
 });
 
 export const waitContext=React.createContext({} as{

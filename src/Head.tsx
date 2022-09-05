@@ -7,19 +7,28 @@ import { headContext } from './context/Context'
 const Head:FC=()=>{
     const {head, setHead} = useContext(headContext);
 
+    interface Head {
+        name : string;
+        fu : number;
+    };
+
     const onClickHead=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-        setHead(Number(e.currentTarget.value));
+        const selectHead:Head ={
+            name : e.currentTarget.name,
+            fu : Number(e.currentTarget.value)
+        }
+        setHead(selectHead);
         console.log(head);
     }
     return (
         <div>
             雀頭は?
-            <Button variant="outlined" value={0} onClick={onClickHead}>数牌</Button>
-            <Button variant="outlined" value={0} onClick={onClickHead}>オタ風</Button>
-            <Button variant="outlined" value={2} onClick={onClickHead}>自風</Button>
-            <Button variant="outlined" value={2} onClick={onClickHead}>場風</Button>
-            <Button variant="outlined" value={4} onClick={onClickHead}>自風+場風</Button>
-            <Button variant="outlined" value={2} onClick={onClickHead}>三元牌</Button>
+            <Button variant="outlined" value={0} name={"数牌"} onClick={onClickHead}>数牌</Button>
+            <Button variant="outlined" value={0} name={"オタ風"} onClick={onClickHead}>オタ風</Button>
+            <Button variant="outlined" value={2} name={"自風"} onClick={onClickHead}>自風</Button>
+            <Button variant="outlined" value={2} name={"場風"} onClick={onClickHead}>場風</Button>
+            <Button variant="outlined" value={4} name={"自風+場風"} onClick={onClickHead}>自風+場風</Button>
+            <Button variant="outlined" value={2} name={"三元牌"} onClick={onClickHead}>三元牌</Button>
         </div>
     )
 }
