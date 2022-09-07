@@ -1,8 +1,7 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import type { FC } from 'react'
 import { Button } from '@mui/material';
 import { pointContext } from './context/Context'
-import { text } from 'stream/consumers';
 
 const BasePoint:FC=()=>{
 

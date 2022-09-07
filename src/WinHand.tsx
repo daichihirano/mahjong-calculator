@@ -7,25 +7,18 @@ import { subPointContext } from './context/Context'
 const WinHand:FC=()=>{
     const {subPoint, setSubPoint} = useContext(subPointContext);
 
-    const onClickTsumo=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-        setSubPoint(2);
-    }
-    const onClickRon=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-        setSubPoint(10);
-    }
-    const onClickChitoi=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-        setSubPoint(25);
-    }
-    const onClickNaki=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-        setSubPoint(0);
+    const onClickWait=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+        setSubPoint(Number(e.currentTarget.value));
     }
     return (
         <div>
+            <span >★押すな★</span>
             上がり方
-            <Button variant="outlined" onClick={onClickTsumo}>ツモ</Button>
-            <Button variant="outlined" onClick={onClickRon}>メンゼンロン</Button>
-            <Button variant="outlined" onClick={onClickChitoi}>七対子</Button>
-            <Button variant="outlined" onClick={onClickNaki}>鳴き</Button>
+            <span>★押したらページを更新★</span>
+            <Button variant="outlined" value={2} onClick={onClickWait}>ツモ</Button>
+            <Button variant="outlined" value={10} onClick={onClickWait}>メンゼンロン</Button>
+            <Button variant="outlined" value={25} onClick={onClickWait}>七対子</Button>
+            <Button variant="outlined" value={0} onClick={onClickWait}>鳴き</Button>
         </div>
     )
 }

@@ -16,6 +16,7 @@ import {
 } from './context/Context';
 
 import {
+  pointTableChild,
   pointTableParent
 } from './constance/Constance';
 
@@ -54,18 +55,40 @@ function App() {
   const [head, setHead] = useState(emptyHead);
   const [wait, setWait] = useState(0);
   
-  const A:number = 20;
-  const B:number = 5;
-  const C:string = 'tsumo';
 
   return (
     <div>
       <h1>符計算</h1>
+      <div>親</div>
       <div>
-        {pointTableParent[subPoint][basePoint]['tsumo']}
+        ツモ{pointTableParent[subPoint === 25 ? 
+            25
+            :Math.ceil((20 + subPoint + head.fu + wait +
+            mentsuList.map((mentsu)=>(
+              mentsu.fu
+            )).reduce((sumFu, fu)=>(
+              sumFu += fu
+            ),0))/10)*10][basePoint]['tsumo']}オール
       </div>
-      <h2>翻数：{basePoint}</h2>
+      <div>
+        ロン{pointTableParent[subPoint][basePoint]['ron']}
+      </div>
+      <div>子</div>
+      <div>
+        ツモ{pointTableChild[subPoint === 25 ? 
+            25
+            :Math.ceil((20 + subPoint + head.fu + wait +
+            mentsuList.map((mentsu)=>(
+              mentsu.fu
+            )).reduce((sumFu, fu)=>(
+              sumFu += fu
+            ),0))/10)*10][basePoint]['tsumo']}
+      </div>
+      <div>
+        ロン{pointTableChild[subPoint][basePoint]['ron']}
+      </div>
       <h2>
+        翻数：{basePoint}<br></br>
         符：{subPoint === 25 ? 
             25
             :
@@ -77,7 +100,7 @@ function App() {
             ),0))/10)*10
             }
       </h2>
-      <h3>
+      <div>
         実際の符：{subPoint === 25 ? 
             25
             :
@@ -88,10 +111,11 @@ function App() {
               sumFu += fu
             ),0)
             }
-      </h3>
+      </div>
       <Box className='hand'>
         <Paper className='hand-head' >
           <div>{head.name}</div>
+          <div>{""}</div>
           <div>{head.fu+"符"}</div>
         </Paper>
         {mentsuList.map((mentsu, key)=>(
@@ -114,7 +138,7 @@ function App() {
         <headContext.Provider value={{head, setHead}}>
           <Head />
         </headContext.Provider>
-        <mentsuListContext.Provider  value = {{mentsuList, setMentsuList}}>
+        <mentsuListContext.Provider  value={{mentsuList, setMentsuList}}>
           <Mentsu />
         </mentsuListContext.Provider>
     </div>

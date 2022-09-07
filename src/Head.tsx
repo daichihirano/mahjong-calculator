@@ -18,7 +18,6 @@ const Head:FC=()=>{
             fu : Number(e.currentTarget.value)
         }
         setHead(selectHead);
-        console.log(head);
     }
     return (
         <div>
