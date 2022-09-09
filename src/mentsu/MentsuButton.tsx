@@ -1,7 +1,13 @@
 import React, {useContext} from 'react'
 import type { FC } from 'react'
 import { Button } from '@mui/material';
-import { mentsuListContext } from '../context/Context'
+import { 
+    mentsuListContext,
+    waitContext,
+    subPointContext,
+    sumSubPointContext,
+    headContext,
+} from '../context/Context';
 
 interface Mentsu {
     name : string;
@@ -10,7 +16,11 @@ interface Mentsu {
 }
 
 const MentsuButton:FC<{mentsu:Mentsu}>=({mentsu})=>{
+    const {wait, setWait} = useContext(waitContext);
+    const {subPoint, setSubPoint} = useContext(subPointContext);
+    const {sumSubPoint, setSumSubPoint} = useContext(sumSubPointContext);
     const {mentsuList, setMentsuList} = useContext(mentsuListContext);
+    const {head, setHead} = useContext(headContext);
 
     const onClickPointButton = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         const newMentsuList : Mentsu[] = [...mentsuList, mentsu];
@@ -18,6 +28,18 @@ const MentsuButton:FC<{mentsu:Mentsu}>=({mentsu})=>{
             newMentsuList.shift();
         };
         setMentsuList(newMentsuList);
+
+        var totalSubPoint:number = 25;
+        if(subPoint !== 25){
+            totalSubPoint = 20 + subPoint + head.fu + wait +
+            newMentsuList.map((mentsu)=>(
+                  mentsu.fu
+                )).reduce((sumFu, fu)=>(
+                  sumFu += fu
+                ),0);
+            totalSubPoint = Math.ceil(totalSubPoint/10)*10;
+        }
+        setSumSubPoint(totalSubPoint);
     }
 
     return (

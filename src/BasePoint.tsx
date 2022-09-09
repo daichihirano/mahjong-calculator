@@ -19,7 +19,7 @@ const BasePoint:FC=()=>{
 
     return (
         <div>
-            何翻?
+            ①何翻ですか?<br></br>
             {basePointList.map((point,idx)=>{
                 return(
                     <Button variant='outlined' value={point} onClick={onClickPointButton}  key={idx}>{point}</Button>

@@ -10,6 +10,7 @@ import Head from './Head';
 import {
   pointContext,
   subPointContext,
+  sumSubPointContext,
   mentsuListContext,
   headContext,
   waitContext,
@@ -17,10 +18,10 @@ import {
 
 import {
   pointTableChild,
-  pointTableParent
+  pointTableParent,
 } from './constance/Constance';
 
-import { Box, Paper } from '@mui/material';
+import { Box, Paper, TableCell, TableContainer, TableRow, Table, TableHead, TableBody } from '@mui/material';
 
 function App() {
 
@@ -47,7 +48,8 @@ function App() {
   }
 
   const [basePoint, setBasePoint] = useState(1)
-  const [subPoint, setSubPoint] = useState(20)
+  const [subPoint, setSubPoint] = useState(0)
+  const [sumSubPoint, setSumSubPoint] = useState(20)
   const [mentsuList, setMentsuList] = useState<Mentsu[]>([
     emptyMentsu,emptyMentsu,emptyMentsu,emptyMentsu
   ]);
@@ -59,59 +61,33 @@ function App() {
   return (
     <div>
       <h1>符計算</h1>
-      <div>親</div>
-      <div>
-        ツモ{pointTableParent[subPoint === 25 ? 
-            25
-            :Math.ceil((20 + subPoint + head.fu + wait +
-            mentsuList.map((mentsu)=>(
-              mentsu.fu
-            )).reduce((sumFu, fu)=>(
-              sumFu += fu
-            ),0))/10)*10][basePoint]['tsumo']}オール
-      </div>
-      <div>
-        ロン{pointTableParent[subPoint][basePoint]['ron']}
-      </div>
-      <div>子</div>
-      <div>
-        ツモ{pointTableChild[subPoint === 25 ? 
-            25
-            :Math.ceil((20 + subPoint + head.fu + wait +
-            mentsuList.map((mentsu)=>(
-              mentsu.fu
-            )).reduce((sumFu, fu)=>(
-              sumFu += fu
-            ),0))/10)*10][basePoint]['tsumo']}
-      </div>
-      <div>
-        ロン{pointTableChild[subPoint][basePoint]['ron']}
-      </div>
       <h2>
-        翻数：{basePoint}<br></br>
-        符：{subPoint === 25 ? 
-            25
-            :
-            Math.ceil((20 + subPoint + head.fu + wait +
-            mentsuList.map((mentsu)=>(
-              mentsu.fu
-            )).reduce((sumFu, fu)=>(
-              sumFu += fu
-            ),0))/10)*10
-            }
+        {basePoint}翻  {sumSubPoint}符
       </h2>
-      <div>
-        実際の符：{subPoint === 25 ? 
-            25
-            :
-            20 + subPoint + head.fu + wait +
-            mentsuList.map((mentsu)=>(
-              mentsu.fu
-            )).reduce((sumFu, fu)=>(
-              sumFu += fu
-            ),0)
-            }
-      </div>
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell> </TableCell>
+              <TableCell align='right'>ツモ</TableCell>
+              <TableCell align='right'>ロン</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>親</TableCell>
+              <TableCell align='right'>{pointTableParent[sumSubPoint][basePoint]['tsumo']}オール</TableCell>
+              <TableCell align='right'>{pointTableParent[sumSubPoint][basePoint]['ron']}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>子</TableCell>
+              <TableCell align='right'>{pointTableChild[sumSubPoint][basePoint]['tsumo']}</TableCell>
+              <TableCell align='right'>{pointTableChild[sumSubPoint][basePoint]['ron']}</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+      
       <Box className='hand'>
         <Paper className='hand-head' >
           <div>{head.name}</div>
@@ -126,21 +102,23 @@ function App() {
           </Paper>
         ))}
       </Box>
-        <pointContext.Provider value={{basePoint, setBasePoint}}>
-          <BasePoint />
-        </pointContext.Provider>
-        <subPointContext.Provider value={{subPoint, setSubPoint}}>
-          <WinHand />
-        </subPointContext.Provider>
-        <waitContext.Provider value={{wait, setWait}}>
-          <WaitHand />
-        </waitContext.Provider>
-        <headContext.Provider value={{head, setHead}}>
-          <Head />
-        </headContext.Provider>
-        <mentsuListContext.Provider  value={{mentsuList, setMentsuList}}>
-          <Mentsu />
-        </mentsuListContext.Provider>
+      <pointContext.Provider value={{basePoint, setBasePoint}}>
+      <sumSubPointContext.Provider value={{sumSubPoint, setSumSubPoint}}>
+      <subPointContext.Provider value={{subPoint, setSubPoint}}>
+      <waitContext.Provider value={{wait, setWait}}>
+      <headContext.Provider value={{head, setHead}}>
+      <mentsuListContext.Provider  value={{mentsuList, setMentsuList}}>
+        <BasePoint />     
+        <WinHand />  
+        <WaitHand />
+        <Head />
+        <Mentsu />
+      </mentsuListContext.Provider>
+      </headContext.Provider>
+      </waitContext.Provider>
+      </subPointContext.Provider>
+      </sumSubPointContext.Provider>
+      </pointContext.Provider>
     </div>
     
   );

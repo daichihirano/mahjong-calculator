@@ -9,7 +9,6 @@ const Minkan:FC=()=>{
 
     return (
         <div>
-            明刻<br />
             <Box sx={{display:'flex', flexDirection:'row'}}>
                 <MinkanChun />
                 <MinkanYao />

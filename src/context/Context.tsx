@@ -10,6 +10,11 @@ export const subPointContext=React.createContext({} as{
     setSubPoint : React.Dispatch<React.SetStateAction<number>>
 });
 
+export const sumSubPointContext=React.createContext({} as{
+    sumSubPoint : number
+    setSumSubPoint : React.Dispatch<React.SetStateAction<number>>
+});
+
 interface Mentsu {
     name : string;
     type : string;

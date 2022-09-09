@@ -7,7 +7,6 @@ import { Box } from '@mui/material';
 const Minko:FC=()=>{
     return (
         <div>
-            明刻<br />
             <Box sx={{display:'flex', flexDirection:'row'}}>
                 <MinkoChun />
                 <MinkoYao />

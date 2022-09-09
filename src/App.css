@@ -1,7 +1,6 @@
 .hand {
   display:flex;
   flex-direction:row;
-  width:70vw;
   height:100px;
   justify-content:space-around;
   align-items: center;
@@ -12,7 +11,7 @@
 .hand-head {
   display:flex;
   flex-direction:column;
-  width:70px;
+  width:20vw;
   height:90%;
   justify-content:space-around;
   align-items: center;
@@ -23,7 +22,7 @@
 .hand-mentsu {
   display:flex;
   flex-direction:column;
-  width:70px;
+  width:15vw;
   height:90%;
   justify-content:space-around;
   align-items: center;

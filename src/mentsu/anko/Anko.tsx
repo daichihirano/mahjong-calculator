@@ -8,7 +8,6 @@ import { Box } from '@mui/material';
 const Anko:FC=()=>{
     return (
         <div>
-            暗刻<br />
             <Box sx={{display:'flex', flexDirection:'row'}}>
                 <AnkoChun />
                 <AnkoYao />
