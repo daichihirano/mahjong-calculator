@@ -36,6 +36,16 @@ function App() {
     fu : number;
   }
 
+  interface Wait {
+    name : string;
+    fu : number;
+  }
+
+  interface Win {
+    name : string;
+    fu : number;
+  }
+
   const emptyMentsu : Mentsu = {
     name:"-",
     type:"-",
@@ -47,15 +57,27 @@ function App() {
     fu:0
   }
 
+  const emptyWait : Wait = {
+    name:"-",
+    fu:0
+  }
+
+  const emptyWin : Win = {
+    name:"-",
+    fu:0
+  }
+
+  
+
   const [basePoint, setBasePoint] = useState(1)
-  const [subPoint, setSubPoint] = useState(0)
+  const [subPoint, setSubPoint] = useState(emptyWin)
   const [sumSubPoint, setSumSubPoint] = useState(20)
   const [mentsuList, setMentsuList] = useState<Mentsu[]>([
     emptyMentsu,emptyMentsu,emptyMentsu,emptyMentsu
   ]);
 
   const [head, setHead] = useState(emptyHead);
-  const [wait, setWait] = useState(0);
+  const [wait, setWait] = useState(emptyWait);
   
 
   return (
@@ -64,25 +86,28 @@ function App() {
       <h2>
         {basePoint}翻  {sumSubPoint}符
       </h2>
+      <div>
+      アガり方：{subPoint.name}  {subPoint.fu}符 / 待ち：{wait.name}  {wait.fu}符 
+      </div>
       <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell> </TableCell>
-              <TableCell align='right'>ツモ</TableCell>
-              <TableCell align='right'>ロン</TableCell>
+              <TableCell></TableCell>
+              <TableCell>ツモ</TableCell>
+              <TableCell>ロン</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             <TableRow>
               <TableCell>親</TableCell>
-              <TableCell align='right'>{pointTableParent[sumSubPoint][basePoint]['tsumo']}オール</TableCell>
-              <TableCell align='right'>{pointTableParent[sumSubPoint][basePoint]['ron']}</TableCell>
+              <TableCell>{pointTableParent[sumSubPoint][basePoint]['tsumo']}オール</TableCell>
+              <TableCell>{pointTableParent[sumSubPoint][basePoint]['ron']}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>子</TableCell>
-              <TableCell align='right'>{pointTableChild[sumSubPoint][basePoint]['tsumo']}</TableCell>
-              <TableCell align='right'>{pointTableChild[sumSubPoint][basePoint]['ron']}</TableCell>
+              <TableCell>{pointTableChild[sumSubPoint][basePoint]['tsumo']}</TableCell>
+              <TableCell>{pointTableChild[sumSubPoint][basePoint]['ron']}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

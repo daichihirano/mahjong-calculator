@@ -6,8 +6,8 @@ export const pointContext=React.createContext({} as{
 });
 
 export const subPointContext=React.createContext({} as{
-    subPoint : number
-    setSubPoint : React.Dispatch<React.SetStateAction<number>>
+    subPoint : Win
+    setSubPoint : React.Dispatch<React.SetStateAction<Win>>
 });
 
 export const sumSubPointContext=React.createContext({} as{
@@ -21,6 +21,16 @@ interface Mentsu {
     fu : number;
 }
 interface Head {
+    name : string;
+    fu : number;
+}
+
+interface Wait {
+    name : string;
+    fu : number;
+}
+
+interface Win {
     name : string;
     fu : number;
 }
@@ -40,6 +50,6 @@ export const headContext=React.createContext({} as{
 });
 
 export const waitContext=React.createContext({} as{
-    wait : number
-    setWait : React.Dispatch<React.SetStateAction<number>>
+    wait : Wait
+    setWait : React.Dispatch<React.SetStateAction<Wait>>
 });

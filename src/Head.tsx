@@ -30,8 +30,8 @@ const Head:FC=()=>{
         setHead(selectHead);
 
         var totalSubPoint:number = 25;
-        if(subPoint !== 25){
-            totalSubPoint = 20 + subPoint + Number(e.currentTarget.value) + wait +
+        if(subPoint.fu !== 25){
+            totalSubPoint = 20 + subPoint.fu + Number(e.currentTarget.value) + wait.fu +
                 mentsuList.map((mentsu)=>(
                   mentsu.fu
                 )).reduce((sumFu, fu)=>(

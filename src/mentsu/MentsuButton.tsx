@@ -30,8 +30,8 @@ const MentsuButton:FC<{mentsu:Mentsu}>=({mentsu})=>{
         setMentsuList(newMentsuList);
 
         var totalSubPoint:number = 25;
-        if(subPoint !== 25){
-            totalSubPoint = 20 + subPoint + head.fu + wait +
+        if(subPoint.fu !== 25){
+            totalSubPoint = 20 + subPoint.fu + head.fu + wait.fu +
             newMentsuList.map((mentsu)=>(
                   mentsu.fu
                 )).reduce((sumFu, fu)=>(

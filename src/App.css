@@ -1,7 +1,7 @@
 .hand {
   display:flex;
   flex-direction:row;
-  height:100px;
+  height:80px;
   justify-content:space-around;
   align-items: center;
   border: solid ;
