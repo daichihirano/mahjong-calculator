@@ -86,9 +86,7 @@ function App() {
       <h2>
         {basePoint}翻  {sumSubPoint}符
       </h2>
-      <div>
-      アガり方：{subPoint.name}  {subPoint.fu}符 / 待ち：{wait.name}  {wait.fu}符 
-      </div>
+      
       <TableContainer>
         <Table>
           <TableHead>
@@ -112,6 +110,9 @@ function App() {
           </TableBody>
         </Table>
       </TableContainer>
+      <div>
+      アガり方：{subPoint.name}  {subPoint.fu}符 / 待ち：{wait.name}  {wait.fu}符 
+      </div>
       
       <Box className='hand'>
         <Paper className='hand-head' >
