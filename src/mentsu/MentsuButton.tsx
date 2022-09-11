@@ -9,11 +9,17 @@ import {
     headContext,
 } from '../context/Context';
 
+import { styled } from '@mui/system';
+
 interface Mentsu {
     name : string;
     type : string;
     fu : number;
 }
+const StyledButton = styled(Button)({
+    backgroundColor:'#EDF0E0',
+});
+
 
 const MentsuButton:FC<{mentsu:Mentsu}>=({mentsu})=>{
     const {wait, setWait} = useContext(waitContext);
@@ -44,7 +50,7 @@ const MentsuButton:FC<{mentsu:Mentsu}>=({mentsu})=>{
 
     return (
         <div>
-            <Button variant="outlined" value={mentsu.fu} onClick={onClickPointButton}  >{mentsu.name}<br />{mentsu.type}</Button>
+            <StyledButton variant="outlined" value={mentsu.fu} onClick={onClickPointButton}  >{mentsu.name}<br />{mentsu.type}</StyledButton>
         </div>
     )
 }

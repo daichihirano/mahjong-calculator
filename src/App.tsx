@@ -21,7 +21,24 @@ import {
   pointTableParent,
 } from './constance/Constance';
 
-import { Box, Paper, TableCell, TableContainer, TableRow, Table, TableHead, TableBody } from '@mui/material';
+import {
+  Box,
+  Paper,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Table,
+  TableHead,
+  TableBody
+} from '@mui/material';
+
+
+import { styled } from '@mui/system';
+const StyledPaper = styled(Paper)({
+  margin:'10px',
+  padding:'10px',
+  background:'linear-gradient(45deg, #E60012 0%, #F39800 14%, #FFF100 28%, #009944 43%, #0068B7 57%, #1D2088 71%, #920783 85%, #E60012 100%)',
+});
 
 function App() {
 
@@ -83,9 +100,9 @@ function App() {
   return (
     <div>
       <h1>符計算</h1>
-      <h2>
+      <div>
         {basePoint}翻  {sumSubPoint}符
-      </h2>
+      </div>
       
       <TableContainer>
         <Table>
@@ -114,7 +131,7 @@ function App() {
       アガり方：{subPoint.name}  {subPoint.fu}符 / 待ち：{wait.name}  {wait.fu}符 
       </div>
       
-      <Box className='hand'>
+      <StyledPaper className='hand'>
         <Paper className='hand-head' >
           <div>{head.name}</div>
           <div>{""}</div>
@@ -127,7 +144,7 @@ function App() {
             <div>{mentsu.fu + "符"}</div>
           </Paper>
         ))}
-      </Box>
+      </StyledPaper>
       <pointContext.Provider value={{basePoint, setBasePoint}}>
       <sumSubPointContext.Provider value={{sumSubPoint, setSumSubPoint}}>
       <subPointContext.Provider value={{subPoint, setSubPoint}}>

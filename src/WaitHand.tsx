@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import type { FC } from 'react'
-import { Button } from '@mui/material';
+import { Button, Paper } from '@mui/material';
+import { styled } from '@mui/system';
 
 import { 
     waitContext,
@@ -14,6 +15,15 @@ interface Wait {
     name : string;
     fu : number;
 }
+
+const StyledPaper = styled(Paper)({
+    margin:'10px',
+    padding:'10px',
+    backgroundColor:'#E8DABE',
+});
+const StyledButton = styled(Button)({
+    backgroundColor:'#EDF0E0',
+});
 
 const WaitHand:FC=()=>{
     const {wait, setWait} = useContext(waitContext);
@@ -47,15 +57,15 @@ const WaitHand:FC=()=>{
     }
 
     return (
-        <div>
+        <StyledPaper>
             ③待ちの形を選んでください<br></br>
-            <Button variant="outlined" value={0} name={"両面"} onClick={onClickWait}>両面</Button>
-            <Button variant="outlined" value={0} name={"シャボ"} onClick={onClickWait}>シャボ</Button>
-            <Button variant="outlined" value={2} name={"ペンチャン"} onClick={onClickWait}>ペンチャン</Button>
-            <Button variant="outlined" value={2} name={"カンチャン"} onClick={onClickWait}>カンチャン</Button>
-            <Button variant="outlined" value={2} name={"単騎"} onClick={onClickWait}>単騎</Button>
-            <Button variant="outlined" value={2} name={"ノベタン"} onClick={onClickWait}>ノベタン</Button>
-        </div>
+            <StyledButton variant="outlined" value={0} name={"両面"} onClick={onClickWait}>両面</StyledButton>
+            <StyledButton variant="outlined" value={0} name={"シャボ"} onClick={onClickWait}>シャボ</StyledButton>
+            <StyledButton variant="outlined" value={2} name={"ペンチャン"} onClick={onClickWait}>ペンチャン</StyledButton>
+            <StyledButton variant="outlined" value={2} name={"カンチャン"} onClick={onClickWait}>カンチャン</StyledButton>
+            <StyledButton variant="outlined" value={2} name={"単騎"} onClick={onClickWait}>単騎</StyledButton>
+            <StyledButton variant="outlined" value={2} name={"ノベタン"} onClick={onClickWait}>ノベタン</StyledButton>
+        </StyledPaper>
     )
 }
 export default WaitHand;

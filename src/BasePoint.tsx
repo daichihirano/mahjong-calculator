@@ -1,7 +1,17 @@
 import React, {useContext} from 'react'
 import type { FC } from 'react'
-import { Button } from '@mui/material';
+import { Button, Paper } from '@mui/material';
 import { pointContext } from './context/Context'
+import { styled } from '@mui/system';
+
+const StyledPaper = styled(Paper)({
+    margin:'10px',
+    padding:'10px',
+    backgroundColor:'#E8DABE'
+});
+const StyledButton = styled(Button)({
+    backgroundColor:'#EDF0E0',
+});
 
 const BasePoint:FC=()=>{
 
@@ -18,14 +28,14 @@ const BasePoint:FC=()=>{
     }
 
     return (
-        <div>
+        <StyledPaper>
             ①何翻ですか?<br></br>
             {basePointList.map((point,idx)=>{
                 return(
-                    <Button variant='outlined' value={point} onClick={onClickPointButton}  key={idx}>{point}</Button>
+                    <StyledButton variant='outlined' value={point} onClick={onClickPointButton}  key={idx}>{point}</StyledButton>
                 )
             })}
-        </div>
+        </StyledPaper>
     )
 }
 export default BasePoint;

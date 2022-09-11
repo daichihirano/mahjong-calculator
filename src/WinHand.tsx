@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import type { FC } from 'react'
-import { Button } from '@mui/material';
+import { Button, Paper } from '@mui/material';
+import { styled } from '@mui/system';
 
 import { 
     waitContext,
@@ -14,6 +15,16 @@ interface Win {
     name : string;
     fu : number;
 }
+
+
+const StyledPaper = styled(Paper)({
+    margin:'10px',
+    padding:'10px',
+    backgroundColor:'#E8DABE'
+});
+const StyledButton = styled(Button)({
+    backgroundColor:'#EDF0E0',
+});
 
 const WinHand:FC=()=>{
     const {wait, setWait} = useContext(waitContext);
@@ -46,15 +57,15 @@ const WinHand:FC=()=>{
         setSumSubPoint(totalSubPoint);
     }
     return (
-        <div>
+        <StyledPaper>
             ②上がり方を選んでください<br></br>
             　七対子の場合は③～⑤はスキップ<br></br>
-            <Button variant="outlined" value={2} name={"ツモ"} onClick={onClickWait}>ツモ</Button>
-            <Button variant="outlined" value={10} name={"門前ロン"} onClick={onClickWait}>門前ロン</Button>
-            <Button variant="outlined" value={0} name={"鳴きロン"} onClick={onClickWait}>鳴きロン</Button>
-            <Button variant="outlined" value={25} name={"七対子"} onClick={onClickWait}>七対子</Button>            
-            <Button variant="outlined" value={20} name={"平和"} onClick={onClickWait}>平和</Button>            
-        </div>
+            <StyledButton variant="outlined" value={2} name={"ツモ"} onClick={onClickWait}>ツモ</StyledButton>
+            <StyledButton variant="outlined" value={10} name={"門前ロン"} onClick={onClickWait}>門前ロン</StyledButton>
+            <StyledButton variant="outlined" value={0} name={"鳴きロン"} onClick={onClickWait}>鳴きロン</StyledButton>
+            <StyledButton variant="outlined" value={25} name={"七対子"} onClick={onClickWait}>七対子</StyledButton>            
+            <StyledButton variant="outlined" value={20} name={"平和"} onClick={onClickWait}>平和</StyledButton>            
+        </StyledPaper>
     )
 }
 export default WinHand;

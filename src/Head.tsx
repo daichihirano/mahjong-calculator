@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import type { FC } from 'react'
-import { Button } from '@mui/material';
+import { Button, Paper } from '@mui/material';
+import { styled } from '@mui/system';
 
 import { 
     waitContext,
@@ -14,6 +15,15 @@ interface Head {
     name : string;
     fu : number;
 };
+
+const StyledPaper = styled(Paper)({
+    margin:'10px',
+    padding:'10px',
+    backgroundColor:'#E8DABE'
+});
+const StyledButton = styled(Button)({
+    backgroundColor:'#EDF0E0',
+});
 
 const Head:FC=()=>{
     const {wait, setWait} = useContext(waitContext);
@@ -42,15 +52,15 @@ const Head:FC=()=>{
         setSumSubPoint(totalSubPoint);
     }
     return (
-        <div>
+        <StyledPaper>
             ④雀頭を選んでください<br></br>
-            <Button variant="outlined" value={0} name={"数牌"} onClick={onClickHead}>数牌</Button>
-            <Button variant="outlined" value={0} name={"オタ風"} onClick={onClickHead}>オタ風</Button>
-            <Button variant="outlined" value={2} name={"自風"} onClick={onClickHead}>自風</Button>
-            <Button variant="outlined" value={2} name={"場風"} onClick={onClickHead}>場風</Button>
-            <Button variant="outlined" value={4} name={"自風+場風"} onClick={onClickHead}>自風+場風</Button>
-            <Button variant="outlined" value={2} name={"三元牌"} onClick={onClickHead}>三元牌</Button>
-        </div>
+            <StyledButton variant="outlined" value={0} name={"数牌"} onClick={onClickHead}>数牌</StyledButton>
+            <StyledButton variant="outlined" value={0} name={"オタ風"} onClick={onClickHead}>オタ風</StyledButton>
+            <StyledButton variant="outlined" value={2} name={"自風"} onClick={onClickHead}>自風</StyledButton>
+            <StyledButton variant="outlined" value={2} name={"場風"} onClick={onClickHead}>場風</StyledButton>
+            <StyledButton variant="outlined" value={4} name={"自風+場風"} onClick={onClickHead}>自風+場風</StyledButton>
+            <StyledButton variant="outlined" value={2} name={"三元牌"} onClick={onClickHead}>三元牌</StyledButton>
+        </StyledPaper>
     )
 }
 export default Head;
