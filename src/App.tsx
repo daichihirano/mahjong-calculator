@@ -37,9 +37,27 @@ import { styled } from '@mui/system';
 const StyledPaper = styled(Paper)({
   margin:'10px',
   padding:'10px',
-  background:'linear-gradient(45deg, #E60012 0%, #F39800 14%, #FFF100 28%, #009944 43%, #0068B7 57%, #1D2088 71%, #920783 85%, #E60012 100%)',
+  background:'#E8DABE',
 });
-
+const PointTableStyledPaper = styled(Paper)({
+  margin:'10px',
+  padding:'10px',
+  background:'#E8DABE',
+});
+const FlexColumnStyledBox = styled(Box)({
+  display:'flex',
+  flexDirection:'column',
+  justifyContent:'center',
+  alignItems:'center',
+  alignContent:'center',
+})
+const FlexRowStyledBox = styled(Box)({
+  display:'flex',
+  flexDirection:'row',
+  justifyContent:'center',
+  alignItems:'center',
+  alignContent:'center',
+})
 function App() {
 
   interface Mentsu {
@@ -84,8 +102,6 @@ function App() {
     fu:0
   }
 
-  
-
   const [basePoint, setBasePoint] = useState(1)
   const [subPoint, setSubPoint] = useState(emptyWin)
   const [sumSubPoint, setSumSubPoint] = useState(20)
@@ -96,55 +112,44 @@ function App() {
   const [head, setHead] = useState(emptyHead);
   const [wait, setWait] = useState(emptyWait);
   
-
   return (
     <div>
       <h1>符計算</h1>
       <div>
-        {basePoint}翻  {sumSubPoint}符
-      </div>
+        翻数や手牌を入力すると点数を返します  
+      </div>      
+      <PointTableStyledPaper className='rainbow'>
+        <FlexColumnStyledBox>
+        <div>
+          {basePoint}翻  {sumSubPoint}符
+        </div>
+          <TableContainer sx={{backgroundColor:'#E8DABE'}}>
+            <Table>
+              <TableHead>
+                <TableRow sx={{borderBottom:'solid', borderTop:'solid'}}>
+                  <TableCell sx={{borderLeft:'solid'}}></TableCell>
+                  <TableCell sx={{borderLeft:'solid'}}>ツモ</TableCell>
+                  <TableCell sx={{borderLeft:'solid', borderRight:'solid'}}>ロン</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow sx={{borderBottom:'solid'}}>
+                  <TableCell sx={{borderLeft:'solid'}}>親</TableCell>
+                  <TableCell sx={{borderLeft:'solid'}}>{pointTableParent[sumSubPoint][basePoint]['tsumo']}オール</TableCell>
+                  <TableCell sx={{borderLeft:'solid', borderRight:'solid'}}>{pointTableParent[sumSubPoint][basePoint]['ron']}</TableCell>
+                </TableRow>
+                <TableRow sx={{borderBottom:'solid'}}>
+                  <TableCell sx={{borderLeft:'solid'}}>子</TableCell>
+                  <TableCell sx={{borderLeft:'solid'}}>{pointTableChild[sumSubPoint][basePoint]['tsumo']}</TableCell>
+                  <TableCell sx={{borderLeft:'solid', borderRight:'solid'}}>{pointTableChild[sumSubPoint][basePoint]['ron']}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </FlexColumnStyledBox>
+      </PointTableStyledPaper>
       
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell></TableCell>
-              <TableCell>ツモ</TableCell>
-              <TableCell>ロン</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow>
-              <TableCell>親</TableCell>
-              <TableCell>{pointTableParent[sumSubPoint][basePoint]['tsumo']}オール</TableCell>
-              <TableCell>{pointTableParent[sumSubPoint][basePoint]['ron']}</TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>子</TableCell>
-              <TableCell>{pointTableChild[sumSubPoint][basePoint]['tsumo']}</TableCell>
-              <TableCell>{pointTableChild[sumSubPoint][basePoint]['ron']}</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <div>
-      アガり方：{subPoint.name}  {subPoint.fu}符 / 待ち：{wait.name}  {wait.fu}符 
-      </div>
       
-      <StyledPaper className='hand'>
-        <Paper className='hand-head' >
-          <div>{head.name}</div>
-          <div>{""}</div>
-          <div>{head.fu+"符"}</div>
-        </Paper>
-        {mentsuList.map((mentsu, key)=>(
-          <Paper className='hand-mentsu' key={key}>
-            <div>{mentsu.name}</div>
-            <div>{mentsu.type}</div>
-            <div>{mentsu.fu + "符"}</div>
-          </Paper>
-        ))}
-      </StyledPaper>
       <pointContext.Provider value={{basePoint, setBasePoint}}>
       <sumSubPointContext.Provider value={{sumSubPoint, setSumSubPoint}}>
       <subPointContext.Provider value={{subPoint, setSubPoint}}>
@@ -162,8 +167,60 @@ function App() {
       </subPointContext.Provider>
       </sumSubPointContext.Provider>
       </pointContext.Provider>
+      <StyledPaper >
+        <FlexColumnStyledBox>
+        <div>
+          アガり方：{subPoint.name}  {subPoint.fu}符 / 待ち：{wait.name}  {wait.fu}符 
+        </div>
+        <div>
+          <FlexRowStyledBox>
+            <Paper className='hand-head' >
+              <div>{head.name}</div>
+              <div>{""}</div>
+              <div>{head.fu+"符"}</div>
+            </Paper>
+          {mentsuList.map((mentsu, key)=>(
+            <Paper className='hand-mentsu' key={key}>
+              <div>{mentsu.name}</div>
+              <div>{mentsu.type}</div>
+              <div>{mentsu.fu + "符"}</div>
+            </Paper>
+          ))}
+          </FlexRowStyledBox>
+        </div>
+        </FlexColumnStyledBox>
+      </StyledPaper>
+      <PointTableStyledPaper className='rainbow'>
+        <FlexColumnStyledBox>
+        <div>
+          {basePoint}翻  {sumSubPoint}符
+        </div>
+          <TableContainer sx={{backgroundColor:'#E8DABE'}}>
+            <Table>
+              <TableHead>
+                <TableRow sx={{borderBottom:'solid', borderTop:'solid'}}>
+                  <TableCell sx={{borderLeft:'solid'}}></TableCell>
+                  <TableCell sx={{borderLeft:'solid'}}>ツモ</TableCell>
+                  <TableCell sx={{borderLeft:'solid', borderRight:'solid'}}>ロン</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow sx={{borderBottom:'solid'}}>
+                  <TableCell sx={{borderLeft:'solid'}}>親</TableCell>
+                  <TableCell sx={{borderLeft:'solid'}}>{pointTableParent[sumSubPoint][basePoint]['tsumo']}オール</TableCell>
+                  <TableCell sx={{borderLeft:'solid', borderRight:'solid'}}>{pointTableParent[sumSubPoint][basePoint]['ron']}</TableCell>
+                </TableRow>
+                <TableRow sx={{borderBottom:'solid'}}>
+                  <TableCell sx={{borderLeft:'solid'}}>子</TableCell>
+                  <TableCell sx={{borderLeft:'solid'}}>{pointTableChild[sumSubPoint][basePoint]['tsumo']}</TableCell>
+                  <TableCell sx={{borderLeft:'solid', borderRight:'solid'}}>{pointTableChild[sumSubPoint][basePoint]['ron']}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </FlexColumnStyledBox>
+      </PointTableStyledPaper>
     </div>
-    
   );
 }
 

@@ -5,14 +5,13 @@
   justify-content:space-around;
   align-items: center;
   border: solid ;
-
 }
 
 .hand-head {
   display:flex;
   flex-direction:column;
   width:20vw;
-  height:90%;
+  height:70px;
   justify-content:space-around;
   align-items: center;
   align-content: space-around;
@@ -23,9 +22,22 @@
   display:flex;
   flex-direction:column;
   width:15vw;
-  height:90%;
+  height:70px;
   justify-content:space-around;
   align-items: center;
   align-content: space-around;
   border: solid ;
+}
+
+.rainbow {
+  animation:bgchange 0.5s ease infinite;
+}
+@keyframes bgchange{
+  0%   {background:linear-gradient(45deg, #E60012 0%, #F39800 14%, #FFF100 28%, #009944 43%, #0068B7 57%, #1D2088 71%, #920783 85%, #E60012 100%)}
+  17%  {background:linear-gradient(45deg,  #F39800 0%, #FFF100 14%, #009944 28%, #0068B7 43%, #1D2088 57%, #920783 71%, #E60012 85%, #F39800 100%)}
+  34%  {background:linear-gradient(45deg,  #FFF100 0%, #009944 14%, #0068B7 28%, #1D2088 43%, #920783 57%, #E60012 71%, #F39800 85%, #FFF100 100%)}
+  51%  {background:linear-gradient(45deg,  #009944 0%, #0068B7 14%, #1D2088 28%, #920783 43%, #E60012 57%, #F39800 71%, #FFF100 85%, #009944 100%)}
+  68%  {background:linear-gradient(45deg,  #0068B7 0%, #1D2088 14%, #920783 28%, #E60012 43%, #F39800 57%, #FFF100 71%, #009944 85%, #0068B7 100%)}
+  85%  {background:linear-gradient(45deg,  #1D2088 0%, #920783 14%, #E60012 28%, #F39800 43%, #FFF100 57%, #009944 71%, #0068B7 85%, #1D2088 100%)}
+  100%  {background:linear-gradient(45deg, #920783 0%, #E60012 14%, #F39800 28%, #FFF100 43%, #009944 57%, #0068B7 71%, #1D2088 85%, #920783 100%)}
 }
