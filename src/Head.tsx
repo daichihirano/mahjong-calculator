@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import type { FC } from 'react'
-import { Button, Paper } from '@mui/material';
+import { Button, Paper, Box } from '@mui/material';
 import { styled } from '@mui/system';
 
 import { 
@@ -10,11 +10,7 @@ import {
     mentsuListContext,
     headContext,
 } from './context/Context'
-
-interface Head {
-    name : string;
-    fu : number;
-};
+import { HeadInterface } from './constance/Interface';
 
 const StyledPaper = styled(Paper)({
     margin:'10px',
@@ -24,7 +20,14 @@ const StyledPaper = styled(Paper)({
 const StyledButton = styled(Button)({
     backgroundColor:'#EDF0E0',
 });
-
+const StyledBox = styled(Box)({
+    display:'flex',
+    flexDirection:'row',
+    flexWrap:'wrap',
+    justifyContent:'center',
+    alignItems:'center',
+    alignContent:'center',
+});
 const Head:FC=()=>{
     const {wait, setWait} = useContext(waitContext);
     const {subPoint, setSubPoint} = useContext(subPointContext);
@@ -33,7 +36,7 @@ const Head:FC=()=>{
     const {head, setHead} = useContext(headContext);
 
     const onClickHead=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-        const selectHead:Head ={
+        const selectHead:HeadInterface ={
             name : e.currentTarget.name,
             fu : Number(e.currentTarget.value)
         }
@@ -53,13 +56,15 @@ const Head:FC=()=>{
     }
     return (
         <StyledPaper>
-            ④雀頭を選んでください<br></br>
-            <StyledButton variant="outlined" value={0} name={"数牌"} onClick={onClickHead}>数牌</StyledButton>
-            <StyledButton variant="outlined" value={0} name={"オタ風"} onClick={onClickHead}>オタ風</StyledButton>
-            <StyledButton variant="outlined" value={2} name={"自風"} onClick={onClickHead}>自風</StyledButton>
-            <StyledButton variant="outlined" value={2} name={"場風"} onClick={onClickHead}>場風</StyledButton>
-            <StyledButton variant="outlined" value={4} name={"自風+場風"} onClick={onClickHead}>自風+場風</StyledButton>
-            <StyledButton variant="outlined" value={2} name={"三元牌"} onClick={onClickHead}>三元牌</StyledButton>
+            ④雀頭を選んでください
+            <StyledBox>
+                <StyledButton variant="outlined" value={0} name={"数牌"} onClick={onClickHead}>数牌</StyledButton>
+                <StyledButton variant="outlined" value={0} name={"オタ風"} onClick={onClickHead}>オタ風</StyledButton>
+                <StyledButton variant="outlined" value={2} name={"自風"} onClick={onClickHead}>自風</StyledButton>
+                <StyledButton variant="outlined" value={2} name={"場風"} onClick={onClickHead}>場風</StyledButton>
+                <StyledButton variant="outlined" value={4} name={"自風+場風"} onClick={onClickHead}>自風+場風</StyledButton>
+                <StyledButton variant="outlined" value={2} name={"三元牌"} onClick={onClickHead}>三元牌</StyledButton>
+            </StyledBox>
         </StyledPaper>
     )
 }

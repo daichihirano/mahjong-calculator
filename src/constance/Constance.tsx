@@ -1,10 +1,33 @@
+import {
+    MentsuInterface,
+    HeadInterface,
+    WaitInterface,
+    WinInterface
+} from './Interface';
+export const emptyMentsu : MentsuInterface = {
+    name:"-",
+    type:"-",
+    fu:0
+};
+export const emptyHead : HeadInterface = {
+name:"-",
+fu:0
+};
+export const emptyWait : WaitInterface = {
+name:"-",
+fu:0
+};
+export const emptyWin : WinInterface = {
+name:"-",
+fu:0
+};
+
 interface tsumoron{
     [index:string]:number;
 }
 interface hanTable{
     [index:number]:tsumoron;
 }
-
 interface table{
     [index:number]:hanTable;
 }

@@ -8,30 +8,31 @@ import { Box, Paper } from '@mui/material';
 
 import { styled } from '@mui/system';
 
-const sxStyle ={
-    display:'flex',
-    flexDirection:'row',
-    flexWrap:'wrap'
-} as const;
-
 const StyledPaper = styled(Paper)({
     margin:'10px',
     padding:'10px',
     backgroundColor:'#E8DABE'
 });
-
+const StyledBox = styled(Box)({
+    display:'flex',
+    flexDirection:'row',
+    flexWrap:'wrap',
+    justifyContent:'center',
+    alignItems:'center',
+    alignContent:'center',
+});
 
 const Mentsu:FC=()=>{
     return (
         <StyledPaper>
             ⑤メンツを選んでください
-            <Box sx={sxStyle}>
+            <StyledBox >
                 <Shuntsu />
                 <Minko />
                 <Anko />
                 <Minkan />
                 <Ankan />
-            </Box>
+            </StyledBox>
         </StyledPaper>
     )
 }

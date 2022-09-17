@@ -1,32 +1,5 @@
-.hand {
-  display:flex;
-  flex-direction:row;
-  height:80px;
-  justify-content:space-around;
-  align-items: center;
-  border: solid ;
-}
-
-.hand-head {
-  display:flex;
-  flex-direction:column;
-  width:20vw;
-  height:70px;
-  justify-content:space-around;
-  align-items: center;
-  align-content: space-around;
-  border: solid ;
-}
-
-.hand-mentsu {
-  display:flex;
-  flex-direction:column;
-  width:15vw;
-  height:70px;
-  justify-content:space-around;
-  align-items: center;
-  align-content: space-around;
-  border: solid ;
+.scroll {
+  overflow: auto;
 }
 
 .rainbow {
@@ -40,4 +13,19 @@
   68%  {background:linear-gradient(45deg,  #0068B7 0%, #1D2088 14%, #920783 28%, #E60012 43%, #F39800 57%, #FFF100 71%, #009944 85%, #0068B7 100%)}
   85%  {background:linear-gradient(45deg,  #1D2088 0%, #920783 14%, #E60012 28%, #F39800 43%, #FFF100 57%, #009944 71%, #0068B7 85%, #1D2088 100%)}
   100%  {background:linear-gradient(45deg, #920783 0%, #E60012 14%, #F39800 28%, #FFF100 43%, #009944 57%, #0068B7 71%, #1D2088 85%, #920783 100%)}
+}
+.offwhite {
+  background:linear-gradient(45deg, #dfdede,#e2e2e2,#a7a7a7);
+}
+.blue {
+  background:linear-gradient(45deg, #b4def1,#87e3ff,#66d4ff);
+}
+.green {
+  background:linear-gradient(45deg, #d5ffe7,#a0ffa5,#6cff5e);
+}
+.red {
+  background:linear-gradient(45deg, #ffd5d5,#ff7c7c,#ff3a3a);
+}
+.gold {
+  background:linear-gradient(45deg, #f8ff91,#ffbe30,#f7d51a);
 }

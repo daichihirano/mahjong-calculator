@@ -1,4 +1,5 @@
 import React from 'react';
+import { HeadInterface, MentsuInterface, WaitInterface, WinInterface } from '../constance/Interface';
 
 export const pointContext=React.createContext({} as{
     basePoint : number
@@ -6,8 +7,8 @@ export const pointContext=React.createContext({} as{
 });
 
 export const subPointContext=React.createContext({} as{
-    subPoint : Win
-    setSubPoint : React.Dispatch<React.SetStateAction<Win>>
+    subPoint : WinInterface
+    setSubPoint : React.Dispatch<React.SetStateAction<WinInterface>>
 });
 
 export const sumSubPointContext=React.createContext({} as{
@@ -15,41 +16,22 @@ export const sumSubPointContext=React.createContext({} as{
     setSumSubPoint : React.Dispatch<React.SetStateAction<number>>
 });
 
-interface Mentsu {
-    name : string;
-    type : string;
-    fu : number;
-}
-interface Head {
-    name : string;
-    fu : number;
-}
-
-interface Wait {
-    name : string;
-    fu : number;
-}
-
-interface Win {
-    name : string;
-    fu : number;
-}
 export const shuntsuContext=React.createContext({} as{
-    shuntsu : Mentsu
-    setShuntsu : React.Dispatch<React.SetStateAction<Mentsu>>
+    shuntsu : MentsuInterface
+    setShuntsu : React.Dispatch<React.SetStateAction<MentsuInterface>>
 });
 
 export const mentsuListContext=React.createContext({} as{
-    mentsuList : Mentsu[]
-    setMentsuList : React.Dispatch<React.SetStateAction<Mentsu[]>>
+    mentsuList : MentsuInterface[]
+    setMentsuList : React.Dispatch<React.SetStateAction<MentsuInterface[]>>
 });
 
 export const headContext=React.createContext({} as{
-    head : Head
-    setHead : React.Dispatch<React.SetStateAction<Head>>
+    head : HeadInterface
+    setHead : React.Dispatch<React.SetStateAction<HeadInterface>>
 });
 
 export const waitContext=React.createContext({} as{
-    wait : Wait
-    setWait : React.Dispatch<React.SetStateAction<Wait>>
+    wait : WaitInterface
+    setWait : React.Dispatch<React.SetStateAction<WaitInterface>>
 });

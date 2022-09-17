@@ -10,18 +10,13 @@ import {
 } from '../context/Context';
 
 import { styled } from '@mui/system';
+import { MentsuInterface } from '../constance/Interface';
 
-interface Mentsu {
-    name : string;
-    type : string;
-    fu : number;
-}
 const StyledButton = styled(Button)({
     backgroundColor:'#EDF0E0',
 });
 
-
-const MentsuButton:FC<{mentsu:Mentsu}>=({mentsu})=>{
+const MentsuButton:FC<{mentsu:MentsuInterface}>=({mentsu})=>{
     const {wait, setWait} = useContext(waitContext);
     const {subPoint, setSubPoint} = useContext(subPointContext);
     const {sumSubPoint, setSumSubPoint} = useContext(sumSubPointContext);
@@ -29,7 +24,7 @@ const MentsuButton:FC<{mentsu:Mentsu}>=({mentsu})=>{
     const {head, setHead} = useContext(headContext);
 
     const onClickPointButton = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-        const newMentsuList : Mentsu[] = [...mentsuList, mentsu];
+        const newMentsuList : MentsuInterface[] = [...mentsuList, mentsu];
         if(newMentsuList.length > 4){
             newMentsuList.shift();
         };

@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import type { FC } from 'react'
-import { Button, Paper } from '@mui/material';
+import { Button, Paper, Box } from '@mui/material';
 import { styled } from '@mui/system';
 
 import { 
@@ -10,11 +10,7 @@ import {
     mentsuListContext,
     headContext,
 } from './context/Context'
-
-interface Wait {
-    name : string;
-    fu : number;
-}
+import { WaitInterface } from './constance/Interface';
 
 const StyledPaper = styled(Paper)({
     margin:'10px',
@@ -24,7 +20,14 @@ const StyledPaper = styled(Paper)({
 const StyledButton = styled(Button)({
     backgroundColor:'#EDF0E0',
 });
-
+const StyledBox = styled(Box)({
+    display:'flex',
+    flexDirection:'row',
+    flexWrap:'wrap',
+    justifyContent:'center',
+    alignItems:'center',
+    alignContent:'center',
+});
 const WaitHand:FC=()=>{
     const {wait, setWait} = useContext(waitContext);
     const {subPoint, setSubPoint} = useContext(subPointContext);
@@ -35,7 +38,7 @@ const WaitHand:FC=()=>{
     
 
     const onClickWait=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
-        const selectWait:Wait ={
+        const selectWait:WaitInterface ={
             name : e.currentTarget.name,
             fu : Number(e.currentTarget.value)
         }
@@ -58,13 +61,15 @@ const WaitHand:FC=()=>{
 
     return (
         <StyledPaper>
-            ③待ちの形を選んでください<br></br>
-            <StyledButton variant="outlined" value={0} name={"両面"} onClick={onClickWait}>両面</StyledButton>
-            <StyledButton variant="outlined" value={0} name={"シャボ"} onClick={onClickWait}>シャボ</StyledButton>
-            <StyledButton variant="outlined" value={2} name={"ペンチャン"} onClick={onClickWait}>ペンチャン</StyledButton>
-            <StyledButton variant="outlined" value={2} name={"カンチャン"} onClick={onClickWait}>カンチャン</StyledButton>
-            <StyledButton variant="outlined" value={2} name={"単騎"} onClick={onClickWait}>単騎</StyledButton>
-            <StyledButton variant="outlined" value={2} name={"ノベタン"} onClick={onClickWait}>ノベタン</StyledButton>
+            ③待ちの形を選んでください
+            <StyledBox>
+                <StyledButton variant="outlined" value={0} name={"両面"} onClick={onClickWait}>両面</StyledButton>
+                <StyledButton variant="outlined" value={0} name={"シャボ"} onClick={onClickWait}>シャボ</StyledButton>
+                <StyledButton variant="outlined" value={2} name={"ペンチャン"} onClick={onClickWait}>ペンチャン</StyledButton>
+                <StyledButton variant="outlined" value={2} name={"カンチャン"} onClick={onClickWait}>カンチャン</StyledButton>
+                <StyledButton variant="outlined" value={2} name={"単騎"} onClick={onClickWait}>単騎</StyledButton>
+                <StyledButton variant="outlined" value={2} name={"ノベタン"} onClick={onClickWait}>ノベタン</StyledButton>
+            </StyledBox>
         </StyledPaper>
     )
 }

@@ -1,14 +1,9 @@
 import type { FC } from 'react'
+import { MentsuInterface } from '../../constance/Interface';
 import MentsuButton from '../MentsuButton';
 
 const AnkanYao:FC=()=>{
-    interface Mentsu {
-        name : string;
-        type : string;
-        fu : number;
-    }
-
-    const mentsuAnkanYao : Mentsu = {
+    const mentsuAnkanYao : MentsuInterface = {
         name:"暗槓",
         type : "1,9,字",
         fu : 32
