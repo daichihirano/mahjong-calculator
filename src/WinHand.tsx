@@ -38,7 +38,7 @@ const WinHand:FC=()=>{
     const {mentsuList, setMentsuList} = useContext(mentsuListContext);
     const {head, setHead} = useContext(headContext);
 
-    const onClickWait=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
+    const onClickWin=(e:React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
         const selectWin:WinInterface ={
             name : e.currentTarget.name,
             fu : Number(e.currentTarget.value)
@@ -62,14 +62,14 @@ const WinHand:FC=()=>{
     }
     return (
         <StyledPaper>
-            ②上がり方を選んでください<br></br>
+            ②上がり方を選んでください → {subPoint.name}:{subPoint.fu}符<br></br>
             　平和ツモ・七対子の場合は③～⑤はスキップ
             <StyledBox>
-                <StyledButton variant="outlined" value={2} name={"ツモ"} onClick={onClickWait}>ツモ</StyledButton>
-                <StyledButton variant="outlined" value={10} name={"門前ロン"} onClick={onClickWait}>門前ロン</StyledButton>
-                <StyledButton variant="outlined" value={0} name={"鳴きロン"} onClick={onClickWait}>鳴きロン</StyledButton>
-                <StyledButton variant="outlined" value={20} name={"平和ツモ"} onClick={onClickWait}>平和ツモ</StyledButton>
-                <StyledButton variant="outlined" value={25} name={"七対子"} onClick={onClickWait}>七対子</StyledButton>
+                <StyledButton variant="outlined" value={2} name={"ツモ"} onClick={onClickWin}>ツモ</StyledButton>
+                <StyledButton variant="outlined" value={10} name={"門前ロン"} onClick={onClickWin}>門前ロン</StyledButton>
+                <StyledButton variant="outlined" value={0} name={"鳴きロン"} onClick={onClickWin}>鳴きロン</StyledButton>
+                <StyledButton variant="outlined" value={20} name={"平和ツモ"} onClick={onClickWin}>平和ツモ</StyledButton>
+                <StyledButton variant="outlined" value={25} name={"七対子"} onClick={onClickWin}>七対子</StyledButton>
             </StyledBox>
         </StyledPaper>
     )

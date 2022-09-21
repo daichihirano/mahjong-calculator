@@ -35,7 +35,7 @@ const BasePoint:FC=()=>{
 
     return (
         <StyledPaper>
-            ①何翻ですか?
+            ①何翻ですか? → {basePoint}翻
             <StyledBox>
                 {basePointList.map((point,idx)=>{
                     return(

@@ -61,7 +61,7 @@ const WaitHand:FC=()=>{
 
     return (
         <StyledPaper>
-            ③待ちの形を選んでください
+            ③待ちの形を選んでください → {wait.name}:{wait.fu}符
             <StyledBox>
                 <StyledButton variant="outlined" value={0} name={"両面"} onClick={onClickWait}>両面</StyledButton>
                 <StyledButton variant="outlined" value={0} name={"シャボ"} onClick={onClickWait}>シャボ</StyledButton>

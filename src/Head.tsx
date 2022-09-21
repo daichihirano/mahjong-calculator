@@ -56,7 +56,7 @@ const Head:FC=()=>{
     }
     return (
         <StyledPaper>
-            ④雀頭を選んでください
+            ④雀頭を選んでください → {head.name}:{head.fu}符
             <StyledBox>
                 <StyledButton variant="outlined" value={0} name={"数牌"} onClick={onClickHead}>数牌</StyledButton>
                 <StyledButton variant="outlined" value={0} name={"オタ風"} onClick={onClickHead}>オタ風</StyledButton>
